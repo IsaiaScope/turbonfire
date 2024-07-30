@@ -1,0 +1,12 @@
+{
+	"name": "@packages/api",
+	"version": "0.0.0",
+	"private": true,
+	"files": [
+		"routeType.ts"
+	],
+	"devDependencies": {
+		"@apps/server": "workspace:*",
+		"typescript": "^5.3.3"
+	}
+}
