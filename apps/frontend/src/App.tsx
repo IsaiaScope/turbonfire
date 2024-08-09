@@ -1,47 +1,57 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { cn } from "@cn";
+import { Button } from "@shadcn/button";
+import { api } from "@/utility/backend/api";
+import { useQuery } from "@tanstack/react-query";
+// import { useTheme } from "./utility/providers/dark-mode";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
-import { ApiRoute } from '@apps/server';
-import { hc } from 'hono/client';
-
-const client = hc<ApiRoute>('/');
-async function fetcher() {
-	const res = await client.api.events['data'].$post({ json: { name: 'ciao' } });
-	const url = await (await client.api.events['$get']()).json();
-	console.log(`🧊 ~ url: `, url);
-	const data = await res.json(); 
-	console.log(`🧊 ~ res: `, data);
+async function fetchData() {
+  const res = await api.events["data"].$post({
+    json: {
+      name: "carlo",
+    },
+  });
+  const data = await res.json();
+  return data;
 }
-fetcher();
-function App() {
-	const [count, setCount] = useState(0);
 
-	return (
-		<>
-			<div>
-				<a href='https://vitejs.dev' target='_blank'>
-					<img src={viteLogo} className='logo' alt='Vite logo' />
-				</a>
-				<a href='https://react.dev' target='_blank'>
-					<img src={reactLogo} className='logo react' alt='React logo' />
-				</a>
-			</div>
-			<h1>Vite + React</h1>
-			<div className='card'>
-				<button onClick={() => setCount(count => count + 1)}>
-					count is {count}
-				</button>
-				<p>
-					Edit <code>src/App.tsx</code> and save to test HMR
-				</p>
-			</div>
-			<p className='read-the-docs'>
-				Click on the Vite and React logos to learn more
-			</p>
-		</>
-	);
+function App() {
+  const {
+    t,
+    i18n: { changeLanguage, language },
+  } = useTranslation(["common", "games"]);
+  const [currentLanguage, setCurrentLanguage] = useState(language);
+  // const { setTheme } = useTheme();
+  const { data, isLoading } = useQuery({
+    queryKey: ["data"],
+    queryFn: fetchData,
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const handleChangeLanguage = () => {
+    const newLanguage = currentLanguage === "en-GB" ? "it-IT" : "en-GB";
+    setCurrentLanguage(newLanguage);
+    changeLanguage(newLanguage);
+  };
+
+  console.log(`🧊 ~ data: `, data);
+
+  return (
+    <div className={cn("md:bg-red-400-50 bg-red-700")}>
+      Home
+      <h3>Current Language: {currentLanguage}</h3>
+      <p>{t("games:games")}</p>
+      <Button onClick={() => changeLanguage("it-IT")}>{t("recipe")}</Button>
+      <Button onClick={() => changeLanguage("en-GB")}>
+        {t("games:games")}
+      </Button>
+      <Button onClick={() => handleChangeLanguage()}>Change Language</Button>
+    </div>
+  );
 }
 
 export default App;

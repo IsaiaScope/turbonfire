@@ -12,15 +12,16 @@ app.use("*", logger())
 const apiRoute = app.basePath('/api').route('/events', eventsRoute)
 // .route('ciao', ()=> {})
 
-app.use('*', serveStatic({ root: './dist' }))
+app.use('*', serveStatic({ root: './build-frontend' }))
 // Serve index.html for all routes
-app.use('*', serveStatic({ path: './dist/index.html' }))
+app.use('*', serveStatic({ path: './build-frontend/index.html' }))
 
 
 serve({
   fetch: app.fetch,
   port  
 })
+
 
 export type ApiRoute = typeof apiRoute
 

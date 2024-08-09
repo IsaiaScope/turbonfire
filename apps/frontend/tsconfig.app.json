@@ -21,7 +21,18 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@cn": ["./src/utility/style/twMerge-clsx-utility-class.ts"],
+      // this alias is for the shared components import correct into components/shadcn folder
+      "@shadcn/*": ["./src/components/shadcn/*"],
+      "@api": ["src/utility/backend/api.ts"],
+      // "~/*": ["./*"]
+      // "@ui/*": ["./src/components/ui/*"],
+      // "@u-style/*": ["./src/utility/style/*"],
+    }
   },
-  "include": ["src"]
+  "include": ["src", "./src/utility/i18next/resources.d.ts"],
 }

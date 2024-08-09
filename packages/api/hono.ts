@@ -1,2 +1,2 @@
-export type { ApiRoute } from '@apps/server'
+export type { ApiRoute } from '@apps/backend';
  
