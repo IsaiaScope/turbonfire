@@ -1,9 +1,9 @@
 import "dotenv/config";
-import { envHono } from './env';
+import { envHono } from '@env';
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { logger } from 'hono/logger';
-import { eventsRoute } from './routes/eventsRoute';
+import { eventsRoute } from './routes/eventsRoute.js';
 import { serveStatic } from '@hono/node-server/serve-static';
 console.log(`🧊 ~ env: `, envHono);
 

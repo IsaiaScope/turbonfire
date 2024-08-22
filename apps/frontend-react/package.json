@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --emptyOutDir",
     "create:translations:json": "i18nexus pull -k hv1KQnCWBHgIGsCIJTx8gg -p ./public/locales",
     "create:translations:interface": "i18next-resources-for-ts interface -i ./public/locales/en-GB -o ./src/@types/i18next/resources.d.ts",
     "update:locales": "pnpm create:translations:json && pnpm create:translations:interface"

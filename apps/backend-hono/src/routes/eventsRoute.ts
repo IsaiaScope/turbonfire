@@ -1,7 +1,7 @@
 import { zValidator } from '@hono/zod-validator';
 import { Hono } from 'hono';
 import { z } from 'zod';
-import { envHono } from '../env';
+import { envHono } from '@env';
 
 // const COMMENT = {
 // 	id: 1,
