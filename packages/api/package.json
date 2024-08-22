@@ -6,7 +6,7 @@
 		"routeType.ts"
 	],
 	"devDependencies": {
-		"@apps/backend": "workspace:*",
+		"@apps/backend-hono": "workspace:*",
 		"typescript": "^5.3.3"
 	}
 }

@@ -1,0 +1,56 @@
+{
+  "name": "@apps/frontend-react",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "create:translations:json": "i18nexus pull -k hv1KQnCWBHgIGsCIJTx8gg -p ./public/locales",
+    "create:translations:interface": "i18next-resources-for-ts interface -i ./public/locales/en-GB -o ./src/@types/i18next/resources.d.ts",
+    "update:locales": "pnpm create:translations:json && pnpm create:translations:interface"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-query": "^5.51.16",
+    "@tanstack/react-router": "^1.49.1",
+    "class-variance-authority": "^0.7.0",
+    "i18next": "^23.12.2",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "i18next-http-backend": "^2.5.2",
+    "lucide-react": "^0.407.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.0.1",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@apps/backend-hono": "workspace:*",
+    "@tanstack/router-devtools": "^1.49.1",
+    "@tanstack/router-plugin": "^1.48.6",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.19",
+    "clsx": "^2.1.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "hono": "^4.4.13",
+    "i18next-resources-for-ts": "^1.5.0",
+    "postcss": "^8.4.39",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-tsconfig-paths": "^4.3.2"
+  },
+  "volta": {
+    "node": "20.11.1"
+  }
+}
