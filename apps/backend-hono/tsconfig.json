@@ -11,9 +11,6 @@
 		"jsxImportSource": "hono/jsx",
 		"esModuleInterop": true,
 		"baseUrl": ".",
-		"paths": {
-			"@env": ["./src/env.js"]
-		}
 	},
 	"include": ["src"],
 	"exclude": ["node_modules"],
