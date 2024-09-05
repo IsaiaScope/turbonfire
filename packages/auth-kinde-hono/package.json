@@ -2,10 +2,31 @@
 	"name": "@packages/auth-kinde-hono",
 	"version": "0.0.0",
 	"private": true,
+	"type": "module",
 	"files": [
-		"kinde.ts"
+		"kinde.ts",
+		"kindeRoute.ts",
+		"env.ts",
+		"kindeMiddleware.ts"
 	],
 	"dependencies": {
-		"@kinde-oss/kinde-typescript-sdk": "^2.9.1"
+		"@kinde-oss/kinde-typescript-sdk": "^2.9.1",
+		"@t3-oss/env-core": "^0.11.0",
+		"hono": "^4.4.13",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@types/node": "^22.5.0",
+		"dotenv": "^16.4.5",
+		"typescript": "^5.5.4",
+		"@packages/typescript-config": "workspace:*"
+	},
+	"exports": {
+		"./env": {
+			"import": "./env.ts"
+		},
+		"./route": {
+			"import": "./kindeRoute.ts"
+		}
 	}
 }

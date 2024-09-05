@@ -1,0 +1,27 @@
+{
+	"name": "@packages/orm-drizzle",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"files": [
+		"drizzle.ts"
+	],
+	"dependencies": {
+		"@t3-oss/env-core": "^0.11.0",
+		"drizzle-orm": "^0.33.0",
+		"postgres": "^3.4.4",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@packages/typescript-config": "workspace:*",
+		"@types/node": "^22.5.0",
+		"dotenv": "^16.4.5",
+		"drizzle-kit": "^0.24.2",
+		"typescript": "^5.5.4"
+	},
+	"exports": {
+		"./drizzle": {
+			"import": "./drizzle.ts"
+		}
+	}
+}

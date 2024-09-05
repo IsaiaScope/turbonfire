@@ -1,13 +1,10 @@
+import { envKinde } from '@packages/auth-kinde-hono/env';
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
  
 export const envHono = createEnv({
   server: {
-		KINDE_DOMAIN: z.string(),
-		KINDE_CLIENT_ID: z.string(),
-		KINDE_CLIENT_SECRET: z.string(),
-		KINDE_REDIRECT_URI: z.string(),
-		KINDE_LOGOUT_REDIRECT_URI: z.string(),
+		PORT: z.string(),
   },
   /**
    * What object holds the environment variables at runtime. This is usually
@@ -28,4 +25,5 @@ export const envHono = createEnv({
    * explicitly specify this option as true.
    */
   emptyStringAsUndefined: true,
+  extends: [envKinde]
 });

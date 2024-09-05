@@ -13,12 +13,16 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as AuthenticatedImport } from './routes/_authenticated'
 
 // Create Virtual Routes
 
 const HomeLazyImport = createFileRoute('/home')()
-const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
+const AuthenticatedProfileLazyImport = createFileRoute(
+  '/_authenticated/profile',
+)()
+const AuthenticatedAboutLazyImport = createFileRoute('/_authenticated/about')()
 
 // Create/Update Routes
 
@@ -27,15 +31,29 @@ const HomeLazyRoute = HomeLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/home.lazy').then((d) => d.Route))
 
-const AboutLazyRoute = AboutLazyImport.update({
-  path: '/about',
+const AuthenticatedRoute = AuthenticatedImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
+} as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const AuthenticatedProfileLazyRoute = AuthenticatedProfileLazyImport.update({
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRoute,
+} as any).lazy(() =>
+  import('./routes/_authenticated/profile.lazy').then((d) => d.Route),
+)
+
+const AuthenticatedAboutLazyRoute = AuthenticatedAboutLazyImport.update({
+  path: '/about',
+  getParentRoute: () => AuthenticatedRoute,
+} as any).lazy(() =>
+  import('./routes/_authenticated/about.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -48,11 +66,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyImport
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthenticatedImport
       parentRoute: typeof rootRoute
     }
     '/home': {
@@ -62,6 +80,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeLazyImport
       parentRoute: typeof rootRoute
     }
+    '/_authenticated/about': {
+      id: '/_authenticated/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AuthenticatedAboutLazyImport
+      parentRoute: typeof AuthenticatedImport
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileLazyImport
+      parentRoute: typeof AuthenticatedImport
+    }
   }
 }
 
@@ -69,7 +101,10 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
-  AboutLazyRoute,
+  AuthenticatedRoute: AuthenticatedRoute.addChildren({
+    AuthenticatedAboutLazyRoute,
+    AuthenticatedProfileLazyRoute,
+  }),
   HomeLazyRoute,
 })
 
@@ -82,18 +117,30 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about",
+        "/_authenticated",
         "/home"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/about": {
-      "filePath": "about.lazy.tsx"
+    "/_authenticated": {
+      "filePath": "_authenticated.tsx",
+      "children": [
+        "/_authenticated/about",
+        "/_authenticated/profile"
+      ]
     },
     "/home": {
       "filePath": "home.lazy.tsx"
+    },
+    "/_authenticated/about": {
+      "filePath": "_authenticated/about.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/profile": {
+      "filePath": "_authenticated/profile.lazy.tsx",
+      "parent": "/_authenticated"
     }
   }
 }

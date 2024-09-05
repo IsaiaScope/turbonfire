@@ -1,16 +1,18 @@
 {
 	"name": "@apps/backend-hono",
 	"type": "module",
-	"main": "dist/index.js",
+	"main": "build-backend/index.js",
 	"scripts": {
 		"dev": "tsx watch src/index.ts",
-		"start": "node dist/index.js",
+		"start": "node build-backend/index.js",
 		"build": "tsc"
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.12.0",
 		"@hono/zod-validator": "^0.2.2",
 		"@t3-oss/env-core": "^0.11.0",
+		"@packages/auth-kinde-hono": "workspace:*",
+		"@packages/orm-drizzle": "workspace:*",
 		"dotenv": "^16.4.5",
 		"hono": "^4.4.13",
 		"zod": "^3.23.8"

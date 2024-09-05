@@ -6,11 +6,14 @@ export default function Navbar() {
       <Link to="/home" className="[&.active]:font-bold">
         Home
       </Link>
+      <Link to="/" className="[&.active]:font-bold">
+        Index
+      </Link>
       <Link to="/about" className="[&.active]:font-bold">
         About
       </Link>
-      <Link to="/" className="[&.active]:font-bold">
-        Index
+      <Link to="/profile"  className="[&.active]:font-bold">
+        Profile
       </Link>
     </nav>
   );

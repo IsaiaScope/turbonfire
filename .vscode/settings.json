@@ -6,5 +6,8 @@
   ],
   "prettier.configPath": "",
   "prettier.useEditorConfig": false,
-  "prettier.jsxSingleQuote": true
+  "prettier.jsxSingleQuote": true,
+  "cSpell.words": [
+    "kinde"
+  ]
 }
