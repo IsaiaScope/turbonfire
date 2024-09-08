@@ -2,7 +2,6 @@ import Navbar from "@ui/navbar";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { type QueryClient } from "@tanstack/react-query";
-// import PageTransitionProvider from "@/utility/providers/page-transition";
 export interface RouterContext {
   queryClient: QueryClient;
 }
@@ -18,9 +17,7 @@ function Root() {
         <header>
           <Navbar />
         </header>
-        {/* <PageTransitionProvider> */}
         <Outlet />
-        {/* </PageTransitionProvider> */}
       </div>
       <TanStackRouterDevtools />
     </>
