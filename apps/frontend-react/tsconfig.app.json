@@ -29,7 +29,6 @@
       // this alias is for the shared components import correct into components/shadcn folder
       "@shadcn/*": ["./src/components/shadcn/*"],
       "@api-client": ["src/utility/backend/api-client.ts"],
-      // "~/*": ["./*"]
       "@ui/*": ["./src/components/ui/*"],
       // "@u-style/*": ["./src/utility/style/*"],
     }

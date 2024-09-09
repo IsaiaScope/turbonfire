@@ -14,11 +14,14 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as AuthenticatedImport } from './routes/_authenticated'
+import { Route as GameRandomiserImport } from './routes/game/randomiser'
 
 // Create Virtual Routes
 
 const HomeLazyImport = createFileRoute('/home')()
 const IndexLazyImport = createFileRoute('/')()
+const WeightIndexLazyImport = createFileRoute('/weight/')()
+const RecipeIndexLazyImport = createFileRoute('/recipe/')()
 const AuthenticatedProfileLazyImport = createFileRoute(
   '/_authenticated/profile',
 )()
@@ -41,6 +44,16 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
+const WeightIndexLazyRoute = WeightIndexLazyImport.update({
+  path: '/weight/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/weight/index.lazy').then((d) => d.Route))
+
+const RecipeIndexLazyRoute = RecipeIndexLazyImport.update({
+  path: '/recipe/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/recipe/index.lazy').then((d) => d.Route))
+
 const AuthenticatedProfileLazyRoute = AuthenticatedProfileLazyImport.update({
   path: '/profile',
   getParentRoute: () => AuthenticatedRoute,
@@ -54,6 +67,11 @@ const AuthenticatedAboutLazyRoute = AuthenticatedAboutLazyImport.update({
 } as any).lazy(() =>
   import('./routes/_authenticated/about.lazy').then((d) => d.Route),
 )
+
+const GameRandomiserRoute = GameRandomiserImport.update({
+  path: '/game/randomiser',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -80,6 +98,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeLazyImport
       parentRoute: typeof rootRoute
     }
+    '/game/randomiser': {
+      id: '/game/randomiser'
+      path: '/game/randomiser'
+      fullPath: '/game/randomiser'
+      preLoaderRoute: typeof GameRandomiserImport
+      parentRoute: typeof rootRoute
+    }
     '/_authenticated/about': {
       id: '/_authenticated/about'
       path: '/about'
@@ -94,6 +119,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProfileLazyImport
       parentRoute: typeof AuthenticatedImport
     }
+    '/recipe/': {
+      id: '/recipe/'
+      path: '/recipe'
+      fullPath: '/recipe'
+      preLoaderRoute: typeof RecipeIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/weight/': {
+      id: '/weight/'
+      path: '/weight'
+      fullPath: '/weight'
+      preLoaderRoute: typeof WeightIndexLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -106,6 +145,9 @@ export const routeTree = rootRoute.addChildren({
     AuthenticatedProfileLazyRoute,
   }),
   HomeLazyRoute,
+  GameRandomiserRoute,
+  RecipeIndexLazyRoute,
+  WeightIndexLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -118,7 +160,10 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/_authenticated",
-        "/home"
+        "/home",
+        "/game/randomiser",
+        "/recipe/",
+        "/weight/"
       ]
     },
     "/": {
@@ -134,6 +179,9 @@ export const routeTree = rootRoute.addChildren({
     "/home": {
       "filePath": "home.lazy.tsx"
     },
+    "/game/randomiser": {
+      "filePath": "game/randomiser.tsx"
+    },
     "/_authenticated/about": {
       "filePath": "_authenticated/about.lazy.tsx",
       "parent": "/_authenticated"
@@ -141,6 +189,12 @@ export const routeTree = rootRoute.addChildren({
     "/_authenticated/profile": {
       "filePath": "_authenticated/profile.lazy.tsx",
       "parent": "/_authenticated"
+    },
+    "/recipe/": {
+      "filePath": "recipe/index.lazy.tsx"
+    },
+    "/weight/": {
+      "filePath": "weight/index.lazy.tsx"
     }
   }
 }

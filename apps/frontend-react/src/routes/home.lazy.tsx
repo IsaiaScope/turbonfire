@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import PageTransitionProvider from "@/utility/providers/page-transition";
 
 async function fetchData() {
   const res = await api.events["data"].$post({
@@ -45,7 +44,6 @@ function Home() {
   };
 
   return (
-    <PageTransitionProvider>
       <div className={cn("md:bg-red-400-50 bg-red-700")}>
         Home
         <h3>Current Language: {currentLanguage}</h3>
@@ -58,7 +56,6 @@ function Home() {
         </Button>
         <Button onClick={() => handleChangeLanguage()}>Change Language</Button>
       </div>
-    </PageTransitionProvider>
   );
 }
 
