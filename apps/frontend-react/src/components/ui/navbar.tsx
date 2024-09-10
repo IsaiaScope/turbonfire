@@ -71,18 +71,18 @@ export default function Navbar() {
                 </MenubarRadioItem>
               </Link>
               <Link to="/weight">
-                <MenubarRadioItem value={NAV_MENU.apps.weight}>
+                <MenubarRadioItem value={NAV_MENU.ROUTES.WEIGHT}>
                   <FaHouseFire />
-                  {NAV_MENU.apps.weight}
+                  {NAV_MENU.ROUTES.WEIGHT}
                 </MenubarRadioItem>
               </Link>
               <MenubarSeparator />
               <MenubarItem disabled>Games</MenubarItem>
               <Link to="/game/randomiser">
-                <MenubarRadioItem value={NAV_MENU.apps.randomiser}>
+                <MenubarRadioItem value={NAV_MENU.ROUTES.RANDOMISER}>
                   <MenubarItem>
                     <FaDice />
-                    {NAV_MENU.apps.randomiser}
+                    {NAV_MENU.ROUTES.RANDOMISER}
                   </MenubarItem>
                 </MenubarRadioItem>
               </Link>
@@ -90,7 +90,7 @@ export default function Navbar() {
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger>{NAV_MENU.navbar.about}</MenubarTrigger>
+          <MenubarTrigger>{NAV_MENU.NAVBAR.ABOUT}</MenubarTrigger>
           <MenubarContent>
             <MenubarItem disabled>Contact me</MenubarItem>
             <MenubarSub>
@@ -111,7 +111,7 @@ export default function Navbar() {
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger>{NAV_MENU.navbar.account}</MenubarTrigger>
+          <MenubarTrigger>{NAV_MENU.NAVBAR.ACCOUNT}</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>Profile</MenubarItem>
             <MenubarSeparator />
@@ -123,7 +123,7 @@ export default function Navbar() {
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger>{NAV_MENU.navbar.doc}</MenubarTrigger>
+          <MenubarTrigger>{NAV_MENU.NAVBAR.DOC}</MenubarTrigger>
           <MenubarContent>
             <MenubarItem>Homepage</MenubarItem>
             <MenubarItem>Common</MenubarItem>
