@@ -65,9 +65,9 @@ export default function Navbar() {
             <MenubarItem disabled>Apps</MenubarItem>
             <MenubarRadioGroup value={checkRoute()}>
               <Link to={`/"${NAV_MENU.ROUTES.RECIPE}`}>
-                <MenubarRadioItem value={NAV_MENU.apps.recipe}>
+                <MenubarRadioItem value={NAV_MENU.ROUTES.RECIPE}>
                   <FaHouseFire />
-                  {NAV_MENU.apps.recipe}
+                  {NAV_MENU.ROUTES.RECIPE}
                 </MenubarRadioItem>
               </Link>
               <Link to="/weight">
