@@ -1,21 +1,19 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Menubar,
-  MenubarCheckboxItem,
   MenubarContent,
   MenubarItem,
   MenubarMenu,
   MenubarRadioGroup,
   MenubarRadioItem,
   MenubarSeparator,
-  MenubarShortcut,
   MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
 } from "@shadcn/menubar";
 // 📝 NOTE: ICONS = https://www.npmjs.com/package/react-icons
-import { FaHouseFire, FaWeightScale, FaDice } from "react-icons/fa6";
+import { FaHouseFire, FaDice } from "react-icons/fa6";
 import { useCallback } from "react";
 
 const NAV_MENU = {
