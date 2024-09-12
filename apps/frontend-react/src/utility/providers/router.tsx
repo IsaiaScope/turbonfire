@@ -1,8 +1,10 @@
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+import { ParseRoute, RouterProvider, createRouter } from "@tanstack/react-router";
 import { TANSTACK } from "../constants/tanstack";
 
 // Import the generated route tree
 import { routeTree } from "@/routeTree.gen";
+
+export type ValidRoutes = ParseRoute<typeof routeTree>['fullPath'];
 
 // Create a new router instance
 const router = createRouter({
