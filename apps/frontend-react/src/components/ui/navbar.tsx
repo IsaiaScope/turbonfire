@@ -50,8 +50,7 @@ export default function Navbar() {
       return NAV_MENU.ROUTES.RANDOMISER;
     }
   }, [pathname]);
-  console.log(`🧊 ~ pathname: `, pathname);
-
+ 
   return (
     <nav className="flex p-2">
       <Menubar>
@@ -62,7 +61,7 @@ export default function Navbar() {
             <MenubarSeparator />
             <MenubarItem disabled>Apps</MenubarItem>
             <MenubarRadioGroup value={checkRoute()}>
-              <Link to={`/"${NAV_MENU.ROUTES.RECIPE}`}>
+              <Link to={`/${NAV_MENU.ROUTES.RECIPE}`}>
                 <MenubarRadioItem value={NAV_MENU.ROUTES.RECIPE}>
                   <FaHouseFire />
                   {NAV_MENU.ROUTES.RECIPE}
@@ -111,7 +110,12 @@ export default function Navbar() {
         <MenubarMenu>
           <MenubarTrigger>{NAV_MENU.NAVBAR.ACCOUNT}</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>Profile</MenubarItem>
+            <Link to="/profile">
+              <MenubarItem>
+                <FaHouseFire />
+                Profile
+              </MenubarItem>
+            </Link>
             <MenubarSeparator />
             <MenubarItem>login</MenubarItem>
             <MenubarItem>Register</MenubarItem>

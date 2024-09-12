@@ -2,7 +2,7 @@ import { cn } from "@cn";
 import { Button } from "@shadcn/button";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
-export const Route = createLazyFileRoute("/")({
+export const Route = createLazyFileRoute("/_authenticated/")({
   component: Index,
 });
 
