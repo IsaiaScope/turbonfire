@@ -1,6 +1,6 @@
 import { type UserType } from '@kinde-oss/kinde-typescript-sdk';
 import { createMiddleware } from 'hono/factory';
-import { kindeClient, sessionManager } from './kinde';
+import { kindeClient, sessionManager } from './kinde.js';
 
 type Env = {
 	Variables: {

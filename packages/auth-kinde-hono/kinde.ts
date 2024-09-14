@@ -4,7 +4,7 @@ import {
 	GrantType,
 	SessionManager,
 } from '@kinde-oss/kinde-typescript-sdk';
-import { envKinde } from './env';
+import { envKinde } from './env.js';
 import { type Context } from 'hono';
 import { getCookie, setCookie, deleteCookie } from 'hono/cookie';
 

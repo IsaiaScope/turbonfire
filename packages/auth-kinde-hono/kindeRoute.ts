@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
-import { kindeClient, sessionManager } from './kinde';
-import { getUser } from './kindeMiddleware';
+import { kindeClient, sessionManager } from './kinde.js';
+import { getUser } from './kindeMiddleware.js';
 
 export const kindeRoute = new Hono()
 	.get('/login', async c => {

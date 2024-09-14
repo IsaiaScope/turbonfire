@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@apps/backend-hono": "workspace:*",
-    "@tanstack/react-query-devtools": "^5.54.1",
-    "@tanstack/router-devtools": "^1.49.1",
+    "@tanstack/react-query-devtools": "^5.56.2",
+    "@tanstack/router-devtools": "^1.57.13",
     "@tanstack/router-plugin": "^1.48.6",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
