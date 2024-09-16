@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, Navigate, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Menubar,
   MenubarContent,
@@ -35,6 +35,7 @@ const NAV_MENU = {
 } as const;
 
 export default function Navbar() {
+  const navigate = useNavigate()
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -50,7 +51,7 @@ export default function Navbar() {
       return NAV_MENU.ROUTES.RANDOMISER;
     }
   }, [pathname]);
- 
+
   return (
     <nav className="flex p-2">
       <Menubar>
@@ -61,7 +62,17 @@ export default function Navbar() {
             <MenubarSeparator />
             <MenubarItem disabled>Apps</MenubarItem>
             <MenubarRadioGroup value={checkRoute()}>
-              <Link to={`/${NAV_MENU.ROUTES.RECIPE}`}>
+              <Link
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("aaaaaaaaa");
+                  setTimeout(() => {
+                    console.log("bbbbbbbbb");
+                    navigate({ to: `/recipe` });
+                  }, 1000);
+                }}
+                to={`/${NAV_MENU.ROUTES.RECIPE}`}
+              >
                 <MenubarRadioItem value={NAV_MENU.ROUTES.RECIPE}>
                   <FaHouseFire />
                   {NAV_MENU.ROUTES.RECIPE}
