@@ -30,8 +30,6 @@ export const sessionManager = (c: Context): SessionManager => ({
 		return result;
 	},
 	async setSessionItem(key: string, value: unknown) {
-		const allCookies = getCookie(c)
-		console.log(`🧊 ~ allCookies: `, allCookies);
 		const cookieOptions = {
 			httpOnly: true,
 			// to have SSL connection

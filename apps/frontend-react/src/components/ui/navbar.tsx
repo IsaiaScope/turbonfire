@@ -1,4 +1,9 @@
-import { Link, Navigate, useNavigate, useRouterState } from "@tanstack/react-router";
+import {
+  Link,
+  Navigate,
+  useNavigate,
+  useRouterState,
+} from "@tanstack/react-router";
 import {
   Menubar,
   MenubarContent,
@@ -15,6 +20,7 @@ import {
 // 📝 NOTE: ICONS = https://www.npmjs.com/package/react-icons
 import { FaHouseFire, FaDice } from "react-icons/fa6";
 import { useCallback } from "react";
+import DelayLink from "./delay-link";
 
 const NAV_MENU = {
   NAVBAR: {
@@ -35,7 +41,6 @@ const NAV_MENU = {
 } as const;
 
 export default function Navbar() {
-  const navigate = useNavigate()
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -62,28 +67,18 @@ export default function Navbar() {
             <MenubarSeparator />
             <MenubarItem disabled>Apps</MenubarItem>
             <MenubarRadioGroup value={checkRoute()}>
-              <Link
-                onClick={(e) => {
-                  e.preventDefault();
-                  console.log("aaaaaaaaa");
-                  setTimeout(() => {
-                    console.log("bbbbbbbbb");
-                    navigate({ to: `/recipe` });
-                  }, 1000);
-                }}
-                to={`/${NAV_MENU.ROUTES.RECIPE}`}
-              >
+              <DelayLink to="/recipe">
                 <MenubarRadioItem value={NAV_MENU.ROUTES.RECIPE}>
                   <FaHouseFire />
                   {NAV_MENU.ROUTES.RECIPE}
                 </MenubarRadioItem>
-              </Link>
-              <Link to="/weight">
+              </DelayLink>
+              <DelayLink to="/weight">
                 <MenubarRadioItem value={NAV_MENU.ROUTES.WEIGHT}>
                   <FaHouseFire />
                   {NAV_MENU.ROUTES.WEIGHT}
                 </MenubarRadioItem>
-              </Link>
+              </DelayLink>
               <MenubarSeparator />
               <MenubarItem disabled>Games</MenubarItem>
               <Link to="/game/randomiser">
