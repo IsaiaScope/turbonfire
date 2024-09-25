@@ -2,7 +2,6 @@ import Navbar from "@ui/navbar";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { type QueryClient } from "@tanstack/react-query";
-import GsapPageTransitionProvider from "@/utility/providers/gsap-page-tansition";
 
 export interface RouterContext {
   queryClient: QueryClient;
@@ -19,9 +18,7 @@ function Root() {
         <header className='z-10'>
           <Navbar />
         </header>
-        <GsapPageTransitionProvider>
           <Outlet />
-        </GsapPageTransitionProvider>
       </div>
       <TanStackRouterDevtools />
     </>

@@ -12,7 +12,7 @@ type Props = {
 export default function DelayLink(props: Props) {
   const navigate = useNavigate();
 
-  const { to, children, delay = 1000 } = props;
+  const { to, children, delay = 0 } = props;
 
   const { set } = useSetTimeout(() => {
     navigate({ to });

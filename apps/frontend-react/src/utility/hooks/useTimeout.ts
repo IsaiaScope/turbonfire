@@ -19,9 +19,8 @@ export default function useSetTimeout(callback: () => void, delay: number) {
   const set = useCallback(() => {
     timeoutRef.current = setTimeout(() => {
       callbackRef.current();
-      clear();
     }, delay);
-  }, [delay, clear]);
+  }, [delay]);
 
   const reset = useCallback(() => {
     clear();

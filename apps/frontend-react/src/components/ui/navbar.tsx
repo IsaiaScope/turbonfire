@@ -20,7 +20,6 @@ import {
 // 📝 NOTE: ICONS = https://www.npmjs.com/package/react-icons
 import { FaHouseFire, FaDice } from "react-icons/fa6";
 import { useCallback } from "react";
-import DelayLink from "./delay-link";
 
 const NAV_MENU = {
   NAVBAR: {
@@ -67,18 +66,18 @@ export default function Navbar() {
             <MenubarSeparator />
             <MenubarItem disabled>Apps</MenubarItem>
             <MenubarRadioGroup value={checkRoute()}>
-              <DelayLink to="/recipe">
+              <Link to="/recipe">
                 <MenubarRadioItem value={NAV_MENU.ROUTES.RECIPE}>
                   <FaHouseFire />
                   {NAV_MENU.ROUTES.RECIPE}
                 </MenubarRadioItem>
-              </DelayLink>
-              <DelayLink to="/weight">
+              </Link>
+              <Link to="/weight">
                 <MenubarRadioItem value={NAV_MENU.ROUTES.WEIGHT}>
                   <FaHouseFire />
                   {NAV_MENU.ROUTES.WEIGHT}
                 </MenubarRadioItem>
-              </DelayLink>
+              </Link>
               <MenubarSeparator />
               <MenubarItem disabled>Games</MenubarItem>
               <Link to="/game/randomiser">

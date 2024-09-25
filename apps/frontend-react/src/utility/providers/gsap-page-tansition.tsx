@@ -11,53 +11,74 @@ export default function GsapPageTransitionProvider({
 }) {
   const isRunning = usePageTransitionStore(({ isRunning }) => isRunning);
   const containerRef = useRef<HTMLDivElement>(null);
+  const state = useRouterState({
+    select: (state) => state.resolvedLocation,
+  });
 
+  useEffect(() => {
+    console.log(`🧊 ~ state: `, state);
+  }, [state]);
   useGSAP(() => {
     const tl = gsap.timeline();
     console.log(`🧊 ~ tl: `, tl);
+    // if (isRunning) {
+    //   tl.set(".banner", {
+    //     yPercent: -100,
+    //   })
+    //     .to(".banner", {
+    //       yPercent: 0,
+    //       stagger: 0.2, // seconds between when each element starts animating
+    //       duration: 1,
+    //       onComplete: () => {},
+    //     })
+    //     .to(".banner", {
+    //       yPercent: 100,
+    //       stagger: 0.2,
+    //       duration: 1,
+    //     });
+    // }
     if (isRunning) {
-      tl.set(".banner", {
-        yPercent: -100,
-      })
-        .to(".banner", {
-          yPercent: 0,
-          stagger: 0.2, // seconds between when each element starts animating
+      gsap.fromTo(
+        containerRef.current,
+        {
+          xPercent: 0,
+        },
+        {
+          xPercent: 100,
           duration: 1,
-          onComplete: () => {},
-        })
-        .to(".banner", {
-          yPercent: 100,
-          stagger: 0.2,
-          duration: 1,
-        });
+          ease: "power2.out",
+          onComplete: () => {
+            console.log(`🧊 ~ onComplete: `, "done");
+          },
+        },
+      );
     }
   }, [isRunning]);
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.set(".banner", {
-      yPercent: -100,
-    })
-      .to(".banner", {
-        yPercent: 0,
-        stagger: 0.2, // seconds between when each element starts animating
-        duration: 1,
-        delay: 1,
-        onComplete: () => {},
-      })
-      .to(".banner", {
-        yPercent: 100,
-        stagger: 0.2,
-        duration: 1,
-      });
-  }, []);
+  // useGSAP(() => {
+  //   const tl = gsap.timeline();
+  //   tl.set(".banner", {
+  //     yPercent: -100,
+  //   })
+  //     .to(".banner", {
+  //       yPercent: 0,
+  //       stagger: 0.2, // seconds between when each element starts animating
+  //       duration: 1,
+  //       onComplete: () => {},
+  //     })
+  //     .to(".banner", {
+  //       yPercent: 100,
+  //       stagger: 0.2,
+  //       duration: 1,
+  //     });
+  // }, []);
 
   return (
     <>
       {/* <div  className="fixed inset-0 bg-orange-700"></div> */}
-      <div className="banner fixed left-0 top-0 z-10 min-h-screen w-1/4 bg-red-950" />
+      {/* <div className="banner fixed left-0 top-0 z-10 min-h-screen w-1/4 bg-red-950" />
       <div className="banner fixed left-1/4 top-0 z-10 min-h-screen w-1/4 bg-red-950" />
       <div className="banner fixed left-2/4 top-0 z-10 min-h-screen w-1/4 bg-red-950" />
-      <div className="banner fixed left-3/4 top-0 z-10 min-h-screen w-1/4 bg-red-950" />
+      <div className="banner fixed left-3/4 top-0 z-10 min-h-screen w-1/4 bg-red-950" /> */}
       <div ref={containerRef} className="h-full">
         {children}
       </div>
