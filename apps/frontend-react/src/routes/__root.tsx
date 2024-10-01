@@ -20,7 +20,7 @@ function Root() {
         </header>
           <Outlet />
       </div>
-      <TanStackRouterDevtools />
+      {/* <TanStackRouterDevtools /> */}
     </>
   );
 }

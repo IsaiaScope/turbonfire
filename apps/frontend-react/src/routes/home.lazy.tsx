@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { createLazyFileRoute } from "@tanstack/react-router";
+import { useTheme } from '@/utility/providers/dark-mode';
 
 async function fetchData() {
   const res = await api.events["data"].$post({
@@ -33,6 +34,8 @@ function Home() {
     queryFn: fetchData,
   });
 
+  const theme = useTheme();
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -41,6 +44,10 @@ function Home() {
     const newLanguage = currentLanguage === "en-GB" ? "it-IT" : "en-GB";
     setCurrentLanguage(newLanguage);
     changeLanguage(newLanguage);
+  };
+
+  const changeTheme = () => {
+    theme.setTheme(theme.theme === "light" ? "dark" : "light");
   };
 
   return (
@@ -55,6 +62,7 @@ function Home() {
           {t("games:games")}
         </Button>
         <Button onClick={() => handleChangeLanguage()}>Change Language</Button>
+        <Button onClick={() => changeTheme()}>Change theme</Button>
       </div>
   );
 }

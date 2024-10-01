@@ -1,144 +1,18 @@
-import {
-  Link,
-  Navigate,
-  useNavigate,
-  useRouterState,
-} from "@tanstack/react-router";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "@shadcn/menubar";
-// 📝 NOTE: ICONS = https://www.npmjs.com/package/react-icons
-import { FaHouseFire, FaDice } from "react-icons/fa6";
-import { useCallback } from "react";
+import MobileTabs from "@ui/mobile-tabs";
+import NavigationMenu from "@ui/navigation-menu";
 
-const NAV_MENU = {
-  NAVBAR: {
-    MAIN: "apps & games",
-    ACCOUNT: "account",
-    ABOUT: "about me",
-    DOC: "documentation",
-  },
-  ROUTES: {
-    RECIPE: "recipe",
-    WEIGHT: "weight",
-    RANDOMISER: "randomiser",
-  },
-  LABELS: {
-    HOME: "home",
-    GAME: "game",
-  },
-} as const;
+// 📝 NOTE: Breakpoint prefix	Minimum width	CSS
+// sm	640px	@media (min-width: 640px)
+// md	768px	@media (min-width: 768px)
+// lg	1024px	@media (min-width: 1024px)
+// xl	1280px	@media (min-width: 1280px)
+// 2xl	1536px	@media (min-width: 1536px)
 
 export default function Navbar() {
-  const pathname = useRouterState({
-    select: (state) => state.location.pathname,
-  });
-
-  const checkRoute = useCallback(() => {
-    if (pathname.startsWith("/recipe")) {
-      return NAV_MENU.ROUTES.RECIPE;
-    }
-    if (pathname.startsWith("/weight")) {
-      return NAV_MENU.ROUTES.WEIGHT;
-    }
-    if (pathname.startsWith("/game/randomiser")) {
-      return NAV_MENU.ROUTES.RANDOMISER;
-    }
-  }, [pathname]);
-
   return (
-    <nav className="flex p-2">
-      <Menubar>
-        <MenubarMenu>
-          <MenubarTrigger>{NAV_MENU.NAVBAR.MAIN}</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem inset>{NAV_MENU.LABELS.HOME}</MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem disabled>Apps</MenubarItem>
-            <MenubarRadioGroup value={checkRoute()}>
-              <Link to="/recipe">
-                <MenubarRadioItem value={NAV_MENU.ROUTES.RECIPE}>
-                  <FaHouseFire />
-                  {NAV_MENU.ROUTES.RECIPE}
-                </MenubarRadioItem>
-              </Link>
-              <Link to="/weight">
-                <MenubarRadioItem value={NAV_MENU.ROUTES.WEIGHT}>
-                  <FaHouseFire />
-                  {NAV_MENU.ROUTES.WEIGHT}
-                </MenubarRadioItem>
-              </Link>
-              <MenubarSeparator />
-              <MenubarItem disabled>Games</MenubarItem>
-              <Link to="/game/randomiser">
-                <MenubarRadioItem value={NAV_MENU.ROUTES.RANDOMISER}>
-                  <MenubarItem>
-                    <FaDice />
-                    {NAV_MENU.ROUTES.RANDOMISER}
-                  </MenubarItem>
-                </MenubarRadioItem>
-              </Link>
-            </MenubarRadioGroup>
-          </MenubarContent>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>{NAV_MENU.NAVBAR.ABOUT}</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem disabled>Contact me</MenubarItem>
-            <MenubarSub>
-              <MenubarSubTrigger>social</MenubarSubTrigger>
-              <MenubarSubContent>
-                <MenubarItem>insta</MenubarItem>
-                <MenubarItem>facebook</MenubarItem>
-                <MenubarItem>github</MenubarItem>
-                <MenubarItem>linkedin</MenubarItem>
-                <MenubarItem>twitch</MenubarItem>
-              </MenubarSubContent>
-              <MenubarItem>mail</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem disabled>About me</MenubarItem>
-              <MenubarItem>Portfolio</MenubarItem>
-              <MenubarItem>Download CV</MenubarItem>
-            </MenubarSub>
-          </MenubarContent>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>{NAV_MENU.NAVBAR.ACCOUNT}</MenubarTrigger>
-          <MenubarContent>
-            <Link to="/profile">
-              <MenubarItem>
-                <FaHouseFire />
-                Profile
-              </MenubarItem>
-            </Link>
-            <MenubarSeparator />
-            <MenubarItem>login</MenubarItem>
-            <MenubarItem>Register</MenubarItem>
-            <MenubarItem>Logout</MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem>Settings</MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-        <MenubarMenu>
-          <MenubarTrigger>{NAV_MENU.NAVBAR.DOC}</MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>Homepage</MenubarItem>
-            <MenubarItem>Common</MenubarItem>
-            <MenubarItem>Front end</MenubarItem>
-            <MenubarItem>Back end</MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-      </Menubar>
-    </nav>
+    <>
+      <NavigationMenu className="hidden sm:block sm:p-2" />
+      <MobileTabs className="sm:hidden" />
+    </>
   );
 }
