@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build --emptyOutDir",
     "create:translations:json": "i18nexus pull -k hv1KQnCWBHgIGsCIJTx8gg -p ./public/locales",
     "create:translations:interface": "i18next-resources-for-ts interface -i ./public/locales/en-GB -o ./src/@types/i18next/resources.d.ts",
-    "update:locales": "pnpm create:translations:json && pnpm create:translations:interface"
+    "update:locales": "pnpm create:translations:json && pnpm create:translations:interface",
+    "dev:mobile": "ngrok http 5173 --domain=internal-dogfish-enjoyed.ngrok-free.app"
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
@@ -30,6 +31,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.1",
     "react-icons": "^5.3.0",
+    "react-responsive": "^10.0.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "5.0.0-rc.2"
   },

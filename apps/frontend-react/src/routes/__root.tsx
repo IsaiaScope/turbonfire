@@ -1,4 +1,4 @@
-import Navbar from "@ui/navbar";
+import Navbar from "@/components/ui/navbar/navbar";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { type QueryClient } from "@tanstack/react-query";
@@ -15,7 +15,7 @@ function Root() {
   return (
     <>
       <div className="flex h-dvh flex-col overflow-hidden">
-        <header className='z-10'>
+        <header>
           <Navbar />
         </header>
           <Outlet />

@@ -18,7 +18,7 @@ async function fetchData() {
   return data;
 }
 
-export const Route = createLazyFileRoute("/home")({
+export const Route = createLazyFileRoute("/apps/")({
   component: Home,
 });
 

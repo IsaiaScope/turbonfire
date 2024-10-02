@@ -21,4 +21,9 @@ i18next
   }
 })
 
+// Add a listener to update the <html> lang attribute
+i18next.on('languageChanged', (lng) => {
+  document.documentElement.lang = lng;
+});
+
 export default i18next;
