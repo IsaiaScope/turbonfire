@@ -21,6 +21,9 @@ import { Route as GamesRandomiserImport } from './routes/games/randomiser'
 const GamesIndexLazyImport = createFileRoute('/games/')()
 const AppsIndexLazyImport = createFileRoute('/apps/')()
 const AuthenticatedIndexLazyImport = createFileRoute('/_authenticated/')()
+const AuthenticatedSettingsLazyImport = createFileRoute(
+  '/_authenticated/settings',
+)()
 const AuthenticatedProfileLazyImport = createFileRoute(
   '/_authenticated/profile',
 )()
@@ -50,6 +53,13 @@ const AuthenticatedIndexLazyRoute = AuthenticatedIndexLazyImport.update({
   getParentRoute: () => AuthenticatedRoute,
 } as any).lazy(() =>
   import('./routes/_authenticated/index.lazy').then((d) => d.Route),
+)
+
+const AuthenticatedSettingsLazyRoute = AuthenticatedSettingsLazyImport.update({
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRoute,
+} as any).lazy(() =>
+  import('./routes/_authenticated/settings.lazy').then((d) => d.Route),
 )
 
 const AuthenticatedProfileLazyRoute = AuthenticatedProfileLazyImport.update({
@@ -117,6 +127,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProfileLazyImport
       parentRoute: typeof AuthenticatedImport
     }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsLazyImport
+      parentRoute: typeof AuthenticatedImport
+    }
     '/_authenticated/': {
       id: '/_authenticated/'
       path: '/'
@@ -161,6 +178,7 @@ export const routeTree = rootRoute.addChildren({
   AuthenticatedRoute: AuthenticatedRoute.addChildren({
     AuthenticatedAboutLazyRoute,
     AuthenticatedProfileLazyRoute,
+    AuthenticatedSettingsLazyRoute,
     AuthenticatedIndexLazyRoute,
   }),
   GamesRandomiserRoute,
@@ -191,6 +209,7 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/_authenticated/about",
         "/_authenticated/profile",
+        "/_authenticated/settings",
         "/_authenticated/"
       ]
     },
@@ -203,6 +222,10 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_authenticated/profile": {
       "filePath": "_authenticated/profile.lazy.tsx",
+      "parent": "/_authenticated"
+    },
+    "/_authenticated/settings": {
+      "filePath": "_authenticated/settings.lazy.tsx",
       "parent": "/_authenticated"
     },
     "/_authenticated/": {

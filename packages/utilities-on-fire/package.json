@@ -1,0 +1,18 @@
+{
+	"name": "@packages/utilities-on-fire",
+	"version": "0.0.0",
+	"private": true,
+	"devDependencies": {
+		"@packages/typescript-config": "workspace:*",
+		"clsx": "^2.1.1",
+		"typescript": "^5.3.3",
+		"tailwind-merge": "^2.4.0",
+		"@types/node": "^20.11.24"
+	},
+	"dependencies": {},
+	"exports": {
+		"./cn": {
+			"import": "./src/react/style/twMerge-clsx-utility-class.ts"
+		}
+	}
+}

@@ -1,4 +1,4 @@
-import { cn } from '@cn';
+import { cn } from '@packages/utilities-on-fire/cn';
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/apps/weight/')({

@@ -12,7 +12,7 @@
   },
   "aliases": {
     "components": "@shadcn",
-    "utils": "@cn",
+    "utils": "@packages/utilities-on-fire/cn",
     "ui": "@shadcn"
   }
 }

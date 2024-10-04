@@ -25,7 +25,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@cn": ["./src/utility/style/twMerge-clsx-utility-class.ts"],
       // this alias is for the shared components import correct into components/shadcn folder
       "@shadcn/*": ["./src/components/shadcn/*"],
       "@api-client": ["src/utility/backend/api-client.ts"],

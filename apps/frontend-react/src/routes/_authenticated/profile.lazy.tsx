@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { cn } from "@cn";
+import { cn } from "@packages/utilities-on-fire/cn";
 
 export const Route = createLazyFileRoute("/_authenticated/profile")({
   component: Profile,

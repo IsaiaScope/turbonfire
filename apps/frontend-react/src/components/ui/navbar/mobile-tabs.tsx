@@ -1,14 +1,12 @@
-import { cn } from "@cn";
+import { cn } from "@packages/utilities-on-fire/cn";
 import {
   FaShapes,
-  // FaGamepad,
   FaScrewdriverWrench,
   FaCode,
-  // FaEarthAmericas,
   FaPuzzlePiece,
 } from "react-icons/fa6";
 import { Separator } from "@shadcn/separator";
-import LinkOnFire from "@ui/link-on-fire";
+import LinkTurbonfire from "@ui/link-turbonfire";
 import { useTranslation } from "react-i18next";
 
 type Props = {
@@ -25,28 +23,28 @@ export default function MobileTabs({ className }: Props) {
         className,
       )}
     >
-      <LinkOnFire
-        id={`id-${t("app", { count: 1 })}`}
-        label={t("app", { count: 1 })}
+      <LinkTurbonfire
+        id={`id-${t("app", { count: 2 })}`}
+        label={t("app", { count: 2 })}
         to="/apps"
         Icon={FaShapes}
       />
       <Separator orientation="vertical" decorative className="h-9" />
-      <LinkOnFire
+      <LinkTurbonfire
         id={`id-${t("game", { count: 1 })}`}
         label={t("game", { count: 1 })}
         to="/games"
         Icon={FaPuzzlePiece}
       />
       <Separator orientation="vertical" decorative className="h-9" />
-      <LinkOnFire
+      <LinkTurbonfire
         id={`id-${t("profile")}`}
         label={t("profile")}
         to="/profile"
         Icon={FaScrewdriverWrench}
       />
       <Separator orientation="vertical" decorative className="h-9" />
-      <LinkOnFire
+      <LinkTurbonfire
         id={`id-${t("about")}`}
         label={t("about")}
         to="/about"

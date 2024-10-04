@@ -1,5 +1,5 @@
 import { ValidRoutes } from "@/utility/providers/router";
-import { cn } from "@cn";
+import { cn } from "@packages/utilities-on-fire/cn";
 import { Link } from "@tanstack/react-router";
 import { IconType } from "react-icons/lib";
 import { Label } from "@shadcn/label";
@@ -14,7 +14,7 @@ type Prop = {
   labelProps?: React.ComponentProps<typeof Label>;
 };
 
-export default function LinkOnFire({
+export default function LinkTurbonfire({
   id,
   label,
   to,
