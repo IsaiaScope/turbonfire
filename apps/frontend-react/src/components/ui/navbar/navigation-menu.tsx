@@ -1,4 +1,4 @@
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Menubar,
   MenubarContent,
@@ -44,6 +44,7 @@ import { useMediaQuery } from "react-responsive";
 import { MEDIA_QUERIES } from "@/utility/constants/media-queries";
 import { ValidRoutes } from "@/utility/providers/router";
 import { LinkOnFire } from "@packages/ui-on-fire";
+import { LINKS } from "@/utility/constants/links";
 
 type Props = {
   className?: string;
@@ -258,8 +259,8 @@ export default function NavigationMenu({ className }: Props) {
                     {t("social network", { count: 5 })}
                   </MenubarLabel>
                 </MenubarSubTrigger>
-                <MenubarSubContent className="p-3" sideOffset={15}>
-                  <LinkOnFire href="https://www.instagram.com/iso_on_fire/">
+                <MenubarSubContent className="p-3" sideOffset={16}>
+                  <LinkOnFire href={LINKS.INSTAGRAM}>
                     <MenubarItem>
                       <FaInstagram
                         size={size - 3}
@@ -270,33 +271,39 @@ export default function NavigationMenu({ className }: Props) {
                       </MenubarLabel>
                     </MenubarItem>
                   </LinkOnFire>
-                  <MenubarItem>
-                    <FaLinkedin
-                      size={size - 3}
-                      className="min-w-7 cursor-pointer lg:min-w-9"
-                    />
-                    <MenubarLabel className="ml-2 mr-4 text-xl lg:text-2xl">
-                      {t("linkedin")}
-                    </MenubarLabel>
-                  </MenubarItem>
-                  <MenubarItem>
-                    <FaGithub
-                      size={size - 3}
-                      className="min-w-7 cursor-pointer lg:min-w-9"
-                    />
-                    <MenubarLabel className="ml-2 mr-4 text-xl lg:text-2xl">
-                      {t("github")}
-                    </MenubarLabel>
-                  </MenubarItem>
-                  <MenubarItem>
-                    <FaTwitch
-                      size={size - 3}
-                      className="min-w-7 cursor-pointer lg:min-w-9"
-                    />
-                    <MenubarLabel className="ml-2 mr-4 text-xl lg:text-2xl">
-                      {t("twitch")}
-                    </MenubarLabel>
-                  </MenubarItem>
+                  <LinkOnFire href={LINKS.LINKEDIN}>
+                    <MenubarItem>
+                      <FaLinkedin
+                        size={size - 3}
+                        className="min-w-7 cursor-pointer lg:min-w-9"
+                      />
+                      <MenubarLabel className="ml-2 mr-4 text-xl lg:text-2xl">
+                        {t("linkedin")}
+                      </MenubarLabel>
+                    </MenubarItem>
+                  </LinkOnFire>
+                  <LinkOnFire href={LINKS.GITHUB}>
+                    <MenubarItem>
+                      <FaGithub
+                        size={size - 3}
+                        className="min-w-7 cursor-pointer lg:min-w-9"
+                      />
+                      <MenubarLabel className="ml-2 mr-4 text-xl lg:text-2xl">
+                        {t("github")}
+                      </MenubarLabel>
+                    </MenubarItem>
+                  </LinkOnFire>
+                  <LinkOnFire href={LINKS.TWITCH}>
+                    <MenubarItem>
+                      <FaTwitch
+                        size={size - 3}
+                        className="min-w-7 cursor-pointer lg:min-w-9"
+                      />
+                      <MenubarLabel className="ml-2 mr-4 text-xl lg:text-2xl">
+                        {t("twitch")}
+                      </MenubarLabel>
+                    </MenubarItem>
+                  </LinkOnFire>
                 </MenubarSubContent>
                 <MenubarItem>
                   <FaAt
@@ -322,7 +329,7 @@ export default function NavigationMenu({ className }: Props) {
                     {t("curriculum vitae")}
                   </MenubarLabel>
                 </MenubarItem>
-                <MenubarItem>
+                <MenubarItem disabled>
                   <FaGlobe
                     size={size - 3}
                     className="min-w-7 cursor-pointer lg:min-w-9"

@@ -15,10 +15,8 @@ function Root() {
   return (
     <>
       <div className="flex h-dvh flex-col overflow-hidden">
-        <header>
-          <Navbar />
-        </header>
-          <Outlet />
+        <Navbar />
+        <Outlet />
       </div>
       {/* <TanStackRouterDevtools /> */}
     </>
